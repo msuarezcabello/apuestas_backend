@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="apuestas_backend-server-v4">
+        <wb-resource deploy-path="/" source-path="/eclipse-target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="apuestas_backend-core-v4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/apuestas_backend-core/apuestas_backend-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="apuestas_backend-api-v4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/apuestas_backend-api/apuestas_backend-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="apuestas_backend-server"/>
+        <property name="java-output-path" value="/apuestas_backend-server/eclipse-target/classes"/>
+    </wb-module>
+</project-modules>
