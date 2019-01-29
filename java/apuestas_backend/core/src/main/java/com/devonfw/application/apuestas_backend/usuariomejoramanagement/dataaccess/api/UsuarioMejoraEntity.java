@@ -2,10 +2,13 @@ package com.devonfw.application.apuestas_backend.usuariomejoramanagement.dataacc
 
 import javax.persistence.*;
 
+import com.devonfw.application.apuestas_backend.mejoramanager.dataaccess.api.MejoraEntity;
+import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api.UsuarioEntity;
+
 @Entity
 @Table(name = "Usuario_Mejora")
 public class UsuarioMejoraEntity {
-	private Usuario usuario;
+	private UsuarioEntity usuario;
 
-	private Mejora mejora;
+	private MejoraEntity mejora;
 }
