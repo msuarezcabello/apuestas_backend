@@ -1,6 +1,7 @@
 create table Apuesta(
 	id bigint not null auto_increment,
 	modificationCounter integer not null,
+
 	ladoApostado bool not null,
 	resultado bool,
 	fecha timestamp as current_timestamp not null,
