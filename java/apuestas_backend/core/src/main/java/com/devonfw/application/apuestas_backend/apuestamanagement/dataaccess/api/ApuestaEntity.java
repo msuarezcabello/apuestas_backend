@@ -1,5 +1,4 @@
 /**
- *
  */
 package com.devonfw.application.apuestas_backend.apuestamanagement.dataaccess.api;
 
@@ -13,15 +12,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
+import com.devonfw.application.apuestas_backend.apuestamanagement.common.api.Apuesta;
+import com.devonfw.application.apuestas_backend.general.dataaccess.api.ApplicationPersistenceEntity;
 import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api.UsuarioEntity;
+
 /**
  * @author msuarezc
- *
  */
 @Entity
 @Table(name = "Persona")
-public class ApuestaEntity {
+public class ApuestaEntity extends ApplicationPersistenceEntity implements Apuesta {
 
 	private Boolean ladoApostado;
 
@@ -35,6 +37,8 @@ public class ApuestaEntity {
 	private float valorGanado;
 
 	private UsuarioEntity usuario;
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @return the ladoApostado
@@ -120,6 +124,28 @@ public class ApuestaEntity {
 	 */
 	public void setUsuario(UsuarioEntity usuario) {
 		this.usuario = usuario;
+	}
+
+	@Override
+	@Transient
+	public Long getUsuarioId() {
+
+		if (this.usuario == null) {
+			return null;
+		}
+		return this.usuario.getId();
+	}
+
+	@Override
+	public void setUsuarioId(Long usuarioId) {
+
+		if (usuarioId == null) {
+			this.usuario = null;
+		} else {
+			UsuarioEntity usuarioEntity = new UsuarioEntity();
+			usuarioEntity.setId(usuarioId);
+			this.usuario = usuarioEntity;
+		}
 	}
 
 }

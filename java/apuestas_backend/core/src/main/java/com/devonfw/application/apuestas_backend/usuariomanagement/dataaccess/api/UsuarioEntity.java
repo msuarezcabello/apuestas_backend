@@ -1,9 +1,6 @@
 /**
- *
  */
 package com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api;
-
-import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,24 +8,26 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
+import com.devonfw.application.apuestas_backend.general.dataaccess.api.ApplicationPersistenceEntity;
 import com.devonfw.application.apuestas_backend.personamanagement.dataaccess.api.PersonaEntity;
+import com.devonfw.application.apuestas_backend.usuariomanagement.common.api.Usuario;
 
 /**
  * @author msuarezc
- *
  */
 @Entity
-@Table( name = "Usuario")
-public class UsuarioEntity {
+@Table(name = "Usuario")
+public class UsuarioEntity extends ApplicationPersistenceEntity implements Usuario {
 
 	private String username;
 
 	private String password;
 
 	private PersonaEntity persona;
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @return the username
@@ -72,6 +71,28 @@ public class UsuarioEntity {
 	@JoinColumn(name = "idPersona")
 	public void setPersona(PersonaEntity persona) {
 		this.persona = persona;
+	}
+
+	@Override
+	@Transient
+	public Long getPersonaId() {
+
+		if (this.persona == null) {
+			return null;
+		}
+		return this.persona.getId();
+	}
+
+	@Override
+	public void setPersonaId(Long personaId) {
+
+		if (personaId == null) {
+			this.persona = null;
+		} else {
+			PersonaEntity personaEntity = new PersonaEntity();
+			personaEntity.setId(personaId);
+			this.persona = personaEntity;
+		}
 	}
 
 }
