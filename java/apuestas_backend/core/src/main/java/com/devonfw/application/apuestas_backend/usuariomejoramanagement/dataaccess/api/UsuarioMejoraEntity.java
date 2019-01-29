@@ -11,4 +11,24 @@ public class UsuarioMejoraEntity {
 	private UsuarioEntity usuario;
 
 	private MejoraEntity mejora;
+
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idUsuario")
+	public UsuarioEntity getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioEntity usuario) {
+		this.usuario = usuario;
+	}
+
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idMejora")
+	public MejoraEntity getMejora() {
+		return mejora;
+	}
+
+	public void setMejora(MejoraEntity mejora) {
+		this.mejora = mejora;
+	}
 }

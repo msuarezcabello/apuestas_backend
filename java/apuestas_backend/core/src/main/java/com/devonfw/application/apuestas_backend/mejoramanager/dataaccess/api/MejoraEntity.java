@@ -19,6 +19,8 @@ public class MejoraEntity {
 		this.descripcion = descripcion;
 	}
 
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idTipoMejora")
 	public TipoMejoraEntity getTipoMejora() {
 		return tipoMejora;
 	}
