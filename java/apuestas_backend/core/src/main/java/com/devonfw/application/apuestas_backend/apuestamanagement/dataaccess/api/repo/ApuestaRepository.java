@@ -45,11 +45,11 @@ public interface ApuestaRepository extends DefaultRepository<ApuestaEntity> {
 		if (fecha != null) {
 			query.where($(alias.getFecha()).eq(fecha));
 		}
-		Float valorApostado = criteria.getValorApostado();
+		Double valorApostado = criteria.getValorApostado();
 		if (valorApostado != null) {
 			query.where($(alias.getValorApostado()).eq(valorApostado));
 		}
-		Float valorGanado = criteria.getValorGanado();
+		Double valorGanado = criteria.getValorGanado();
 		if (valorGanado != null) {
 			query.where($(alias.getValorGanado()).eq(valorGanado));
 		}

@@ -60,6 +60,8 @@ public class UsuarioEntity extends ApplicationPersistenceEntity implements Usuar
 	/**
 	 * @return the persona
 	 */
+	@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idPersona")
 	public PersonaEntity getPersona() {
 		return persona;
 	}
@@ -67,8 +69,6 @@ public class UsuarioEntity extends ApplicationPersistenceEntity implements Usuar
 	/**
 	 * @param persona the persona to set
 	 */
-	@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idPersona")
 	public void setPersona(PersonaEntity persona) {
 		this.persona = persona;
 	}

@@ -13,8 +13,8 @@ public class ApuestaEto extends AbstractEto implements Apuesta {
 	private Boolean ladoApostado;
 	private Boolean resultado;
 	private Timestamp fecha;
-	private float valorApostado;
-	private float valorGanado;
+	private double valorApostado;
+	private double valorGanado;
 
 	private Long usuarioId;
 
@@ -49,22 +49,22 @@ public class ApuestaEto extends AbstractEto implements Apuesta {
 	}
 
 	@Override
-	public float getValorApostado() {
+	public double getValorApostado() {
 		return valorApostado;
 	}
 
 	@Override
-	public void setValorApostado(float valorApostado) {
+	public void setValorApostado(double valorApostado) {
 		this.valorApostado = valorApostado;
 	}
 
 	@Override
-	public float getValorGanado() {
+	public double getValorGanado() {
 		return valorGanado;
 	}
 
 	@Override
-	public void setValorGanado(float valorGanado) {
+	public void setValorGanado(double valorGanado) {
 		this.valorGanado = valorGanado;
 	}
 
@@ -85,8 +85,8 @@ public class ApuestaEto extends AbstractEto implements Apuesta {
 		result = prime * result + ((this.ladoApostado == null) ? 0 : this.ladoApostado.hashCode());
 		result = prime * result + ((this.resultado == null) ? 0 : this.resultado.hashCode());
 		result = prime * result + ((this.fecha == null) ? 0 : this.fecha.hashCode());
-		result = prime * result + ((Float) valorApostado).hashCode();
-		result = prime * result + ((Float) valorGanado).hashCode();
+		result = prime * result + ((Double) valorApostado).hashCode();
+		result = prime * result + ((Double) valorGanado).hashCode();
 
 		result = prime * result + ((this.usuarioId == null) ? 0 : this.usuarioId.hashCode());
 		return result;

@@ -44,25 +44,25 @@ public interface Apuesta extends ApplicationEntity {
 	 * @return valorApostadoId
 	 */
 
-	public float getValorApostado();
+	public double getValorApostado();
 
 	/**
 	 * @param valorApostado setter for valorApostado attribute
 	 */
 
-	public void setValorApostado(float valorApostado);
+	public void setValorApostado(double valorApostado);
 
 	/**
 	 * @return valorGanadoId
 	 */
 
-	public float getValorGanado();
+	public double getValorGanado();
 
 	/**
 	 * @param valorGanado setter for valorGanado attribute
 	 */
 
-	public void setValorGanado(float valorGanado);
+	public void setValorGanado(double valorGanado);
 
 	/**
 	 * getter for usuarioId attribute

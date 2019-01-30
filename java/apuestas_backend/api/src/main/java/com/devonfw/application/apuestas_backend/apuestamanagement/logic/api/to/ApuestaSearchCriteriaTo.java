@@ -13,8 +13,8 @@ public class ApuestaSearchCriteriaTo extends AbstractSearchCriteriaTo {
 	private Boolean ladoApostado;
 	private Boolean resultado;
 	private Timestamp fecha;
-	private Float valorApostado;
-	private Float valorGanado;
+	private Double valorApostado;
+	private Double valorGanado;
 
 	private Long usuarioId;
 
@@ -70,7 +70,7 @@ public class ApuestaSearchCriteriaTo extends AbstractSearchCriteriaTo {
 	 * @return valorApostadoId
 	 */
 
-	public Float getValorApostado() {
+	public Double getValorApostado() {
 		return valorApostado;
 	}
 
@@ -78,7 +78,7 @@ public class ApuestaSearchCriteriaTo extends AbstractSearchCriteriaTo {
 	 * @param valorApostado setter for valorApostado attribute
 	 */
 
-	public void setValorApostado(Float valorApostado) {
+	public void setValorApostado(Double valorApostado) {
 		this.valorApostado = valorApostado;
 	}
 
@@ -86,7 +86,7 @@ public class ApuestaSearchCriteriaTo extends AbstractSearchCriteriaTo {
 	 * @return valorGanadoId
 	 */
 
-	public Float getValorGanado() {
+	public Double getValorGanado() {
 		return valorGanado;
 	}
 
@@ -94,7 +94,7 @@ public class ApuestaSearchCriteriaTo extends AbstractSearchCriteriaTo {
 	 * @param valorGanado setter for valorGanado attribute
 	 */
 
-	public void setValorGanado(Float valorGanado) {
+	public void setValorGanado(Double valorGanado) {
 		this.valorGanado = valorGanado;
 	}
 

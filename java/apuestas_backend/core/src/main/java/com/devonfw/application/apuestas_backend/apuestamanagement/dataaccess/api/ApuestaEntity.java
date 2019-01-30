@@ -22,7 +22,7 @@ import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api
  * @author msuarezc
  */
 @Entity
-@Table(name = "Persona")
+@Table(name = "Apuesta")
 public class ApuestaEntity extends ApplicationPersistenceEntity implements Apuesta {
 
 	private Boolean ladoApostado;
@@ -32,9 +32,9 @@ public class ApuestaEntity extends ApplicationPersistenceEntity implements Apues
 	@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp fecha;
 
-	private float valorApostado;
+	private double valorApostado;
 
-	private float valorGanado;
+	private double valorGanado;
 
 	private UsuarioEntity usuario;
 
@@ -85,28 +85,28 @@ public class ApuestaEntity extends ApplicationPersistenceEntity implements Apues
 	/**
 	 * @return the valorApostado
 	 */
-	public float getValorApostado() {
+	public double getValorApostado() {
 		return valorApostado;
 	}
 
 	/**
 	 * @param valorApostado the valorApostado to set
 	 */
-	public void setValorApostado(float valorApostado) {
+	public void setValorApostado(double valorApostado) {
 		this.valorApostado = valorApostado;
 	}
 
 	/**
 	 * @return the valorGanado
 	 */
-	public float getValorGanado() {
+	public double getValorGanado() {
 		return valorGanado;
 	}
 
 	/**
 	 * @param valorGanado the valorGanado to set
 	 */
-	public void setValorGanado(float valorGanado) {
+	public void setValorGanado(double valorGanado) {
 		this.valorGanado = valorGanado;
 	}
 
