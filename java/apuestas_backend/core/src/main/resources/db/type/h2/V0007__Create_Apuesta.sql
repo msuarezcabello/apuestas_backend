@@ -9,5 +9,5 @@ create table Apuesta(
 	valorGanado double not null,
 	idUsuario bigint not null,
 	constraint Pk_Apuesta primary key (id),
-	constraint Fk_Apuesta_Usuario foreign key (idUsuario) references Usuario (id)
+	constraint Fk_Apuesta_Usuario foreign key(idUsuario) references Usuario (id)
 );

@@ -4,6 +4,6 @@ create table Usuario_Mejora(
 	idUsuario bigint not null,
 	idMejora bigint not null,
 	constraint Pk_Usuario_Mejora primary key (id),
-	constraint Fk_Usuario_Mejora_Usuario foreign key idUsuario references Usuario (id),
-	constraint Fk_Usuario_Mejora_Mejora foreign key idMejora references Mejora (id)
+	constraint Fk_Usuario_Mejora_Usuario foreign key(idUsuario) references Usuario (id),
+	constraint Fk_Usuario_Mejora_Mejora foreign key(idMejora) references Mejora (id)
 );

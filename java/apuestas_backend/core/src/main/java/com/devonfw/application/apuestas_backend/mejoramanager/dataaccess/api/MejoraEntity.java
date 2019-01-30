@@ -13,7 +13,7 @@ import com.devonfw.application.apuestas_backend.mejoramanager.common.api.Mejora;
 import com.devonfw.application.apuestas_backend.tipomejoramanagement.dataaccess.api.TipoMejoraEntity;
 
 @Entity
-@Table(name = "CreateMejora")
+@Table(name = "Mejora")
 public class MejoraEntity extends ApplicationPersistenceEntity implements Mejora {
 
 	private String descripcion;

@@ -11,3 +11,86 @@ create table TipoMejora(
 	descripcion varchar(255) not null
 	constraint Pk_TipoMejora primary key (id)
 ) [42001-197]
+2019-01-30 09:01:14 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE TIPOMEJORA(
+	ID BIGINT NOT NULL AUTO_INCREMENT,
+	MODIFICATIONCOUNTER INTEGER NOT NULL,
+	DESCRIPCION VARCHAR(255) NOT NULL
+	CONSTRAINT PK_TIPOMEJORA PRIMARY KEY ([*]ID)
+) "; expected "HASH, AUTO_INCREMENT, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table TipoMejora(
+	id bigint not null auto_increment,
+	modificationCounter integer not null,
+	descripcion varchar(255) not null
+	constraint Pk_TipoMejora primary key (id)
+) [42001-197]
+2019-01-30 09:02:57 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE MEJORA(
+	ID BIGINT NOT NULL AUTO_INCREMENT,
+	MODIFICATIONCOUNTER INTEGER NOT NULL,
+	DESCRIPCION VARCHAR(255) NOT NULL
+	IDTIPOMEJORA[*] BIGINT NOT NULL,
+	CONSTRAINT PK_MEJORA PRIMARY KEY (ID),
+	CONSTRAINT FK_MEJORA_TIPOMEJORA FOREIGN KEY IDTIPOMEJORA REFERENCES TIPOMEJORA (ID)
+) "; expected "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table Mejora(
+	id bigint not null auto_increment,
+	modificationCounter integer not null,
+	descripcion varchar(255) not null
+	idTipoMejora bigint not null,
+	constraint Pk_Mejora primary key (id),
+	constraint Fk_Mejora_TipoMejora foreign key idTipoMejora references TipoMejora (id)
+) [42001-197]
+2019-01-30 09:03:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE MEJORA(
+	ID BIGINT NOT NULL AUTO_INCREMENT,
+	MODIFICATIONCOUNTER INTEGER NOT NULL,
+	DESCRIPCION VARCHAR(255) NOT NULL,
+	IDTIPOMEJORA BIGINT NOT NULL,
+	CONSTRAINT PK_MEJORA PRIMARY KEY (ID),
+	CONSTRAINT FK_MEJORA_TIPOMEJORA FOREIGN KEY IDTIPOMEJORA[*] REFERENCES TIPOMEJORA (ID)
+) "; expected "("; SQL statement:
+create table Mejora(
+	id bigint not null auto_increment,
+	modificationCounter integer not null,
+	descripcion varchar(255) not null,
+	idTipoMejora bigint not null,
+	constraint Pk_Mejora primary key (id),
+	constraint Fk_Mejora_TipoMejora foreign key idTipoMejora references TipoMejora (id)
+) [42001-197]
+2019-01-30 09:07:44 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE MEJORA(
+	ID BIGINT NOT NULL AUTO_INCREMENT,
+	MODIFICATIONCOUNTER INTEGER NOT NULL,
+	DESCRIPCION VARCHAR(255) NOT NULL,
+	IDTIPOMEJORA BIGINT NOT NULL,
+	CONSTRAINT PK_MEJORA PRIMARY KEY (ID),
+	CONSTRAINT FK_MEJORA_TIPOMEJORA FOREIGN KEY IDTIPOMEJORA[*] REFERENCES TIPOMEJORA(ID)
+) "; expected "("; SQL statement:
+create table Mejora(
+	id bigint not null auto_increment,
+	modificationCounter integer not null,
+	descripcion varchar(255) not null,
+	idTipoMejora bigint not null,
+	constraint Pk_Mejora primary key (id),
+	constraint Fk_Mejora_TipoMejora foreign key idTipoMejora references TipoMejora(id)
+) [42001-197]
+2019-01-30 09:10:43 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE USUARIO_MEJORA(
+	ID BIGINT NOT NULL AUTO_INCREMENT,
+	MODIFICATIONCOUNTER INTEGER NOT NULL,
+	IDUSUARIO BIGINT NOT NULL,
+	IDMEJORA BIGINT NOT NULL,
+	CONSTRAINT PK_USUARIO_MEJORA PRIMARY KEY (ID),
+	CONSTRAINT FK_USUARIO_MEJORA_USUARIO FOREIGN KEY IDUSUARIO[*] REFERENCES USUARIO (ID),
+	CONSTRAINT FK_USUARIO_MEJORA_MEJORA FOREIGN KEY IDMEJORA REFERENCES MEJORA (ID)
+) "; expected "("; SQL statement:
+create table Usuario_Mejora(
+	id bigint not null auto_increment,
+	modificationCounter integer not null,
+	idUsuario bigint not null,
+	idMejora bigint not null,
+	constraint Pk_Usuario_Mejora primary key (id),
+	constraint Fk_Usuario_Mejora_Usuario foreign key idUsuario references Usuario (id),
+	constraint Fk_Usuario_Mejora_Mejora foreign key idMejora references Mejora (id)
+) [42001-197]
