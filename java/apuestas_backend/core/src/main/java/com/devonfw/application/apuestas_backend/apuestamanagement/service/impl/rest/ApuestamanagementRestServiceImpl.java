@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.Apuestamanagement;
 import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.to.ApuestaCto;
+import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.to.ApuestaEto;
 import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.to.ApuestaSearchCriteriaTo;
 import com.devonfw.application.apuestas_backend.apuestamanagement.service.api.rest.ApuestamanagementRestService;
 
@@ -28,5 +29,15 @@ public class ApuestamanagementRestServiceImpl implements ApuestamanagementRestSe
 	@Override
 	public Page<ApuestaCto> findApuestaCtos(ApuestaSearchCriteriaTo searchCriteriaTo) {
 		return this.apuestamanagement.findApuestaCtos(searchCriteriaTo);
+	}
+
+	@Override
+	public ApuestaEto saveApuesta(ApuestaEto apuestaEto) {
+		return this.apuestamanagement.saveApuesta(apuestaEto);
+	}
+
+	@Override
+	public void deleteApuesta(long id) {
+		this.apuestamanagement.deleteApuesta(id);
 	}
 }
