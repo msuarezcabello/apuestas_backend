@@ -44,13 +44,13 @@ public class UcManageApuestaImpl extends AbstractApuestaUc implements UcManageAp
 
 	@Override
 	public Boolean deleteApuesta(long apuestaId) {
-		ApuestaCto apuestaCto = getApuestamanagement().findApuestaCto(apuestaId);
+		//ApuestaCto apuestaCto = getApuestamanagement().findApuestaCto(apuestaId);
 
-		ApuestaEntity apuestaEntity = getBeanMapper().map(apuestaCto, ApuestaEntity.class);
+		//ApuestaEntity apuestaEntity = getBeanMapper().map(apuestaCto, ApuestaEntity.class);
 
-		getApuestaRepository().delete(apuestaEntity);
+		getApuestaRepository().deleteById(apuestaId);
 
-		LOG.debug("The apuesta with id '{}' has been deleted.", apuestaCto.getApuesta().getId());
+		LOG.debug("The apuesta with id '{}' has been deleted.", apuestaId);
 
 		return true;
 	}
@@ -61,20 +61,20 @@ public class UcManageApuestaImpl extends AbstractApuestaUc implements UcManageAp
 		Objects.requireNonNull(apuestaEto, "UcManageApuestaImpl apuesta null");
 
 		ApuestaEntity apuestaEntity = getBeanMapper().map(apuestaEto, ApuestaEntity.class);
+
 		try {
-			valdiateUsuarioIdExist(apuestaEto.getUsuarioId());
+			validiateUsuarioIdExist(apuestaEto.getUsuarioId());
 		} catch (IllegalArgumentException e) {
 			return null;
 		}
+
 		apuestaEntity.setFecha(Timestamp.from(Instant.now()));
 		// Tengo el id del usuario al que quiero relacionar en el Eto?
 		ApuestaEntity apuestaSaved = getApuestaRepository().save(apuestaEntity);
 
-
-
+		return getBeanMapper().map(apuestaSaved, ApuestaEto.class);
 
 //		LOG.debug("The apuesta with id '{}' has been saved.", apuestaEntity.getId());
-		return getBeanMapper().map(apuestaSaved, ApuestaEto.class);
 
 //		UsuarioCto usuarioCto = getUcFindUsuario().findUsuarioCto(apuestaEto.getUsuarioId());
 //		UsuarioEntity usuarioEntity = getBeanMapper().map(usuarioCto.getUsuario(), UsuarioEntity.class);
@@ -88,9 +88,9 @@ public class UcManageApuestaImpl extends AbstractApuestaUc implements UcManageAp
 //		return null;
 	}
 
-	private void valdiateUsuarioIdExist(long usuarioId) throws IllegalArgumentException {
+	private void validiateUsuarioIdExist(long usuarioId) throws IllegalArgumentException {
 		UsuarioCto usuarioCto = getUcFindUsuario().findUsuarioCto(usuarioId);
-//		(null == usuarioCto) ? throw new IllegalArgumentException() : return;
+		if (null == usuarioCto) throw new IllegalArgumentException();
 	}
 
 	public Apuestamanagement getApuestamanagement() {
