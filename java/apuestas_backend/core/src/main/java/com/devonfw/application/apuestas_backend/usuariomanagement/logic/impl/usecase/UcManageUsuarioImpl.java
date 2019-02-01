@@ -15,8 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
-import com.devonfw.application.apuestas_backend.personamanagement.dataaccess.api.PersonaEntity;
+import com.devonfw.application.apuestas_backend.apuestamanagement.dataaccess.api.ApuestaEntity;
 import com.devonfw.application.apuestas_backend.personamanagement.logic.api.Personamanagement;
+import com.devonfw.application.apuestas_backend.personamanagement.logic.api.to.PersonaEto;
 import com.devonfw.application.apuestas_backend.personamanagement.logic.api.usecase.UcFindPersona;
 import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api.UsuarioEntity;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
@@ -24,6 +25,7 @@ import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.U
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usecase.UcFindUsuario;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usecase.UcManageUsuario;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.base.usecase.AbstractUsuarioUc;
+
 /**
  * @author msuarezc
  *
@@ -58,22 +60,26 @@ public class UcManageUsuarioImpl extends AbstractUsuarioUc implements UcManageUs
 
 		UsuarioEntity usuarioEntity = getBeanMapper().map(usuarioEto, UsuarioEntity.class);
 
-		long personaId = usuarioEntity.getPersonaId();
-		UsuarioSearchCriteriaTo usuarioSearchCriteriaTo = new UsuarioSearchCriteriaTo();
-		usuarioSearchCriteriaTo.setPersonaId(personaId);
+		try {
+			validatePersonaExist(usuarioEto.getPersonaId());
+		} catch (IllegalArgumentException e) {
+			return null;
+		}
 
-		Pageable pageable = PageRequest.of(0, 100);
-		usuarioSearchCriteriaTo.setPageable(pageable);
-
-		// save the Usuario
-		UsuarioEntity usuarioEntitySaved = getUsuarioRepository().save(usuarioEntity);
-		LOG.debug("The usuario with id '{}' has been saved.", usuarioEntitySaved.getId());
-
+		UsuarioEntity usuarioSaved = getUsuarioRepository().save(usuarioEntity);
 
 		return getBeanMapper().map(usuarioEntity, UsuarioEto.class);
 	}
 
 	public Personamanagement getPersonamanagement() {
 		return this.personamanagement;
+	}
+
+	public Boolean validatePersonaExist(long idPersona) throws IllegalArgumentException {
+		return (null == getUcFindPersona().findPersona(idPersona))? true : false;
+	}
+
+	public UcFindPersona getUcFindPersona() {
+		return ucFindPersona;
 	}
 }

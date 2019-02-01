@@ -89,8 +89,8 @@ public class UcManageApuestaImpl extends AbstractApuestaUc implements UcManageAp
 	}
 
 	private void valdiateUsuarioIdExist(long usuarioId) throws IllegalArgumentException {
-		//UsuarioCto usuarioCto= getUcFindUsuario().findUsuarioCto(usuarioId);
-		//(null == usuarioCto) ? throw new IllegalArgumentException() : return;
+		UsuarioCto usuarioCto = getUcFindUsuario().findUsuarioCto(usuarioId);
+//		(null == usuarioCto) ? throw new IllegalArgumentException() : return;
 	}
 
 	public Apuestamanagement getApuestamanagement() {

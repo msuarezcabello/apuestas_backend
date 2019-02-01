@@ -6,6 +6,7 @@ import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -21,6 +22,7 @@ import com.devonfw.application.apuestas_backend.personamanagement.logic.base.use
  */
 @Named
 @Validated
+@Primary
 @Transactional
 public class UcFindPersonaImpl extends AbstractPersonaUc implements UcFindPersona {
 
