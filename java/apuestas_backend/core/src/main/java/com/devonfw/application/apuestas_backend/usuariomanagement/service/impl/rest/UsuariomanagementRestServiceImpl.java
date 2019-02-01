@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.Usuariomanagement;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioCto;
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioSearchCriteriaTo;
 import com.devonfw.application.apuestas_backend.usuariomanagement.service.api.rest.UsuariomanagementRestService;
 
@@ -28,5 +29,11 @@ public class UsuariomanagementRestServiceImpl implements UsuariomanagementRestSe
 	@Override
 	public Page<UsuarioCto> findUsuarioCtos(UsuarioSearchCriteriaTo searchCriteriaTo) {
 		return this.usuariomanagement.findUsuarioCtos(searchCriteriaTo);
+	}
+
+	@Override
+	public UsuarioEto saveAccessCode(UsuarioEto usuarioEto) {
+
+		return this.usuariomanagement.saveUsuario(usuarioEto);
 	}
 }

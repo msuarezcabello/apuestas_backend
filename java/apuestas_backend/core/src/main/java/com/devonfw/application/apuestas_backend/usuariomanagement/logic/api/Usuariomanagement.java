@@ -1,5 +1,6 @@
 package com.devonfw.application.apuestas_backend.usuariomanagement.logic.api;
 
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usecase.UcFindUsuario;
 
 /**
@@ -7,4 +8,5 @@ import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usec
  */
 public interface Usuariomanagement extends UcFindUsuario {
 
+	UsuarioEto saveUsuario(UsuarioEto usuarioEto);
 }

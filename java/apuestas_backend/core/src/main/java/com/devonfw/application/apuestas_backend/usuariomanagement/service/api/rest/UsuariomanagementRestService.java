@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.Usuariomanagement;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioCto;
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioSearchCriteriaTo;
 
 /**
@@ -44,4 +45,14 @@ public interface UsuariomanagementRestService {
 	@POST
 	public Page<UsuarioCto> findUsuarioCtos(UsuarioSearchCriteriaTo searchCriteriaTo);
 
+	/**
+	 * Delegates to {@link Accesscodemanagement#saveAccessCode}.
+	 *
+	 * @param queue the {@link UsuarioEto} to be saved
+	 * @return the recently created {@link UsuarioEto}
+	 */
+
+	@POST
+	@Path("/usuario/")
+	public UsuarioEto saveAccessCode(UsuarioEto usuarioEto);
 }
