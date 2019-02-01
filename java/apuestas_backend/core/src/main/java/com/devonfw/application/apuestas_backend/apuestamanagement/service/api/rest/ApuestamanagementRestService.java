@@ -1,6 +1,7 @@
 package com.devonfw.application.apuestas_backend.apuestamanagement.service.api.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.Apuestamanagement;
 import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.to.ApuestaCto;
+import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.to.ApuestaEto;
 import com.devonfw.application.apuestas_backend.apuestamanagement.logic.api.to.ApuestaSearchCriteriaTo;
 
 /**
@@ -44,4 +46,22 @@ public interface ApuestamanagementRestService {
 	@POST
 	public Page<ApuestaCto> findApuestaCtos(ApuestaSearchCriteriaTo searchCriteriaTo);
 
+	/**
+	 * Delegates to {@link Apuestamanagement#saveApuesta}.
+	 *
+	 * @param queue the {@link ApuestaEto} to be saved
+	 * @return the recently created {@link ApuestaEto}
+	 */
+	@POST
+	@Path("/apuesta/")
+	public ApuestaEto saveApuesta(ApuestaEto apuestaEto);
+
+	/**
+	 * Delegates to {@link Apuestamanagement#deleteApuesta}.
+	 *
+	 * @param id ID of the {@link ApuestaEto} to be deleted
+	 */
+	@DELETE
+	@Path("/apuesta/{id}/")
+	public void deleteApuesta(@PathParam("id") long id);
 }

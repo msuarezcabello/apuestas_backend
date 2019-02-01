@@ -3,6 +3,7 @@ package com.devonfw.application.apuestas_backend.usuariomanagement.logic.impl;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.general.logic.base.AbstractComponentFacade;

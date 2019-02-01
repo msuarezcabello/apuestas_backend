@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +29,7 @@ import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.U
 @Named
 @Validated
 @Transactional
+@Primary
 public class UcFindApuestaImpl extends AbstractApuestaUc implements UcFindApuesta {
 
 	/** Logger instance. */
