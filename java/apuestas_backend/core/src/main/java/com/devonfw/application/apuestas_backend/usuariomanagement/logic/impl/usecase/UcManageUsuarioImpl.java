@@ -20,6 +20,8 @@ import com.devonfw.application.apuestas_backend.personamanagement.logic.api.Pers
 import com.devonfw.application.apuestas_backend.personamanagement.logic.api.to.PersonaEto;
 import com.devonfw.application.apuestas_backend.personamanagement.logic.api.usecase.UcFindPersona;
 import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api.UsuarioEntity;
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.Usuariomanagement;
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioCto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioSearchCriteriaTo;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usecase.UcFindUsuario;
@@ -44,13 +46,22 @@ public class UcManageUsuarioImpl extends AbstractUsuarioUc implements UcManageUs
 	@Inject
 	private Personamanagement personamanagement;
 
+	private Usuariomanagement usuariomanagement;
+
 	/** Logger instance. */
 	private static final Logger LOG = LoggerFactory.getLogger(UcManageUsuarioImpl.class);
 
 	@Override
 	public Boolean deleteUsuario(long usuarioId) {
+		try {
+			getUsuarioRepository().deleteById(usuarioId);
 
-		return null;
+			LOG.debug("The usuario with id '{}' has been deleted.",usuarioId);
+			return true;
+
+		} catch (IllegalArgumentException e) {
+			return false;
+		}
 	}
 
 	@Override
@@ -81,5 +92,13 @@ public class UcManageUsuarioImpl extends AbstractUsuarioUc implements UcManageUs
 
 	public UcFindPersona getUcFindPersona() {
 		return ucFindPersona;
+	}
+
+	public UcFindUsuario getUcFindUsuario() {
+		return ucFindUsuario;
+	}
+
+	public Usuariomanagement getUsuariomanagement() {
+		return this.usuariomanagement;
 	}
 }

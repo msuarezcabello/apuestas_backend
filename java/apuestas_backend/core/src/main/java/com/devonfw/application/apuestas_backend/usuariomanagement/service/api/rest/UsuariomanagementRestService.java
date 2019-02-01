@@ -1,6 +1,7 @@
 package com.devonfw.application.apuestas_backend.usuariomanagement.service.api.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -46,13 +47,21 @@ public interface UsuariomanagementRestService {
 	public Page<UsuarioCto> findUsuarioCtos(UsuarioSearchCriteriaTo searchCriteriaTo);
 
 	/**
-	 * Delegates to {@link Accesscodemanagement#saveAccessCode}.
+	 * Delegates to {@link Usuarioemanagement#saveUsuario}.
 	 *
 	 * @param queue the {@link UsuarioEto} to be saved
 	 * @return the recently created {@link UsuarioEto}
 	 */
 
 	@POST
-	@Path("/usuario/")
-	public UsuarioEto saveAccessCode(UsuarioEto usuarioEto);
+	@Path("/usuario/cto/")
+	public UsuarioEto saveUsuario(UsuarioEto usuarioEto);
+
+	/**
+	 * @param queue the {@link usuarioId} to be deleted
+	 * @return a Boolean
+	 */
+	@DELETE
+	@Path("/usuario/{id}")
+	public Boolean deleteUsuario(@PathParam("id") long id);
 }

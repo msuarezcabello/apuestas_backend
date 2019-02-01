@@ -9,4 +9,5 @@ import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usec
 public interface Usuariomanagement extends UcFindUsuario {
 
 	UsuarioEto saveUsuario(UsuarioEto usuarioEto);
+	Boolean deleteUsuario(long usuarioId);
 }

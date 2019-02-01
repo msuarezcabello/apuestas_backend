@@ -44,4 +44,9 @@ public class UsuariomanagementImpl extends AbstractComponentFacade implements Us
 
 		return ucManageUsuario.saveUsuario(usuarioEto);
 	}
+
+	@Override
+	public Boolean deleteUsuario(long usuarioId) {
+		return ucManageUsuario.deleteUsuario(usuarioId);
+	}
 }
