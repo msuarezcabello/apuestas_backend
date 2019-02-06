@@ -40,8 +40,6 @@ public class UcManageMejoraImpl extends AbstractMejoraUc implements UcManageMejo
 	@Inject
 	private Mejoramanagement mejoramanagement;
 
-	@Inject
-	private Tipomejoramanagement tipomejoramanagement;
 
 	/** Logger instance. */
 	private static final Logger LOG = LoggerFactory.getLogger(UcManageMejoraImpl.class);
@@ -54,9 +52,6 @@ public class UcManageMejoraImpl extends AbstractMejoraUc implements UcManageMejo
 		return ucFindTipoMejora;
 	}
 
-	public Tipomejoramanagement getTipomejoramanagement() {
-		return tipomejoramanagement;
-	}
 
 	public Mejoramanagement getMejoramanagement() {
 		return mejoramanagement;
