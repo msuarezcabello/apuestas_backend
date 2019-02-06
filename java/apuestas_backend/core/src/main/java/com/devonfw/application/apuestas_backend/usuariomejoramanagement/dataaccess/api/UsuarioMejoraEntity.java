@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.devonfw.application.apuestas_backend.general.dataaccess.api.ApplicationPersistenceEntity;
-import com.devonfw.application.apuestas_backend.mejoramanager.dataaccess.api.MejoraEntity;
+import com.devonfw.application.apuestas_backend.mejoramanagement.dataaccess.api.MejoraEntity;
 import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api.UsuarioEntity;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.common.api.UsuarioMejora;
 

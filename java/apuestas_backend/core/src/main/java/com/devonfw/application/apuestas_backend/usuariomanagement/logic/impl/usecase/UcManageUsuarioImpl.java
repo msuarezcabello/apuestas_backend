@@ -79,7 +79,7 @@ public class UcManageUsuarioImpl extends AbstractUsuarioUc implements UcManageUs
 
 		UsuarioEntity usuarioSaved = getUsuarioRepository().save(usuarioEntity);
 
-		return getBeanMapper().map(usuarioEntity, UsuarioEto.class);
+		return getBeanMapper().map(usuarioSaved, UsuarioEto.class);
 	}
 
 	public Personamanagement getPersonamanagement() {

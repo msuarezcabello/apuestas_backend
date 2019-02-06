@@ -1,6 +1,6 @@
 package com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to;
 
-import com.devonfw.application.apuestas_backend.mejoramanager.logic.api.to.MejoraEto;
+import com.devonfw.application.apuestas_backend.mejoramanagement.logic.api.to.MejoraEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.module.basic.common.api.to.AbstractCto;
 

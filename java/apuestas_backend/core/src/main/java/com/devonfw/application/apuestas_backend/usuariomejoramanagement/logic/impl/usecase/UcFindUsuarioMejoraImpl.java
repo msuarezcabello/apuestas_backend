@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
-import com.devonfw.application.apuestas_backend.mejoramanager.logic.api.to.MejoraEto;
+import com.devonfw.application.apuestas_backend.mejoramanagement.logic.api.to.MejoraEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.dataaccess.api.UsuarioMejoraEntity;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraCto;
