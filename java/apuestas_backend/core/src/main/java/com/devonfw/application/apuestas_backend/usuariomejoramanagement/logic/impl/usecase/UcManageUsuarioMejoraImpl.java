@@ -5,6 +5,7 @@ package com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.i
 
 import java.util.Objects;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.slf4j.Logger;
@@ -12,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.devonfw.application.apuestas_backend.mejoramanagement.logic.api.usecase.UcFindMejora;
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.usecase.UcFindUsuario;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.impl.usecase.UcManageUsuarioImpl;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.dataaccess.api.UsuarioMejoraEntity;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraEto;
@@ -26,6 +29,12 @@ import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.ba
 @Validated
 @Transactional
 public class UcManageUsuarioMejoraImpl extends AbstractUsuarioMejoraUc implements UcManageUsuarioMejora{
+
+	@Inject
+	private UcFindUsuario ucFindUsuario;
+
+	@Inject
+	private UcFindMejora ucFindMejora;
 
 	/** Logger instance. */
 	private static final Logger LOG = LoggerFactory.getLogger(UcManageUsuarioImpl.class);
@@ -48,16 +57,27 @@ public class UcManageUsuarioMejoraImpl extends AbstractUsuarioMejoraUc implement
 		UsuarioMejoraEntity usuarioMejoraEntity = getBeanMapper().map(usuarioMejoraEto, UsuarioMejoraEntity.class);
 
 		try {
-
+			if(validParameters(usuarioMejoraEto)) {
+				UsuarioMejoraEntity usuarioMejoraSaved = getUsuarioMejoraRepository().save(usuarioMejoraEntity);
+				return getBeanMapper().map(usuarioMejoraSaved, UsuarioMejoraEto.class);
+			}
+			return null;
 		} catch (IllegalArgumentException e) {
-			// TODO: handle exception
+			return null;
 		}
-
-		return null;
 	}
 
-	public Boolean validarParametros(UsuarioMejoraEto usuarioMejoraEto) {
-		return true;
+	public Boolean validParameters(UsuarioMejoraEto usuarioMejoraEto) {
+		return (getUcFindUsuario().findUsuarioCto(usuarioMejoraEto.getUsuarioId())!=null &&
+		getUcFindMejora().findMejoraCto(usuarioMejoraEto.getMejoraId())!=null)?true:false;
+	}
+
+	public UcFindUsuario getUcFindUsuario() {
+		return ucFindUsuario;
+	}
+
+	public UcFindMejora getUcFindMejora() {
+		return ucFindMejora;
 	}
 
 }

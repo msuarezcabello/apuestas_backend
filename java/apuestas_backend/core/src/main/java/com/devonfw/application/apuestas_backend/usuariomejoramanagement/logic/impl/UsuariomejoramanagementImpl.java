@@ -11,6 +11,7 @@ import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.ap
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraEto;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraSearchCriteriaTo;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.usecase.UcFindUsuarioMejora;
+import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.usecase.UcManageUsuarioMejora;
 
 /**
  * Implementation of component interface of usuariomejoramanagement
@@ -20,6 +21,9 @@ public class UsuariomejoramanagementImpl extends AbstractComponentFacade impleme
 
 	@Inject
 	private UcFindUsuarioMejora ucFindUsuarioMejora;
+
+	@Inject
+	private UcManageUsuarioMejora ucManageUsuarioMejora;
 
 	@Override
 	public UsuarioMejoraCto findUsuarioMejoraCto(long id) {
@@ -35,13 +39,11 @@ public class UsuariomejoramanagementImpl extends AbstractComponentFacade impleme
 
 	@Override
 	public Boolean deleteUsuarioMejora(long idUsuarioMejora) {
-		// TODO Auto-generated method stub
-		return null;
+		return ucManageUsuarioMejora.deleteUsuarioMejora(idUsuarioMejora);
 	}
 
 	@Override
 	public UsuarioMejoraEto saveUsuarioMejora(UsuarioMejoraEto usuarioMejoraEto) {
-		// TODO Auto-generated method stub
-		return null;
+		return ucManageUsuarioMejora.saveUsuarioMejora(usuarioMejoraEto);
 	}
 }

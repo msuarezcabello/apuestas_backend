@@ -1,6 +1,7 @@
 package com.devonfw.application.apuestas_backend.usuariomejoramanagement.service.api.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.Usuariomejoramanagement;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraCto;
+import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraEto;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraSearchCriteriaTo;
 
 /**
@@ -44,4 +46,11 @@ public interface UsuariomejoramanagementRestService {
 	@POST
 	public Page<UsuarioMejoraCto> findUsuarioMejoraCtos(UsuarioMejoraSearchCriteriaTo searchCriteriaTo);
 
+	@Path("/usuariomejora/cto/")
+	@POST
+	public UsuarioMejoraEto saveUsuarioMejora(UsuarioMejoraEto UsuarioMejoraEto);
+
+	@Path("/usuariomejora/{id}")
+	@DELETE
+	public Boolean deleteUsuarioMejora(@PathParam("id") long idUsuarioMejora);
 }
