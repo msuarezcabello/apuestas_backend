@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import com.devonfw.application.apuestas_backend.general.logic.base.AbstractComponentFacade;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.Usuariomejoramanagement;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraCto;
+import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraEto;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.to.UsuarioMejoraSearchCriteriaTo;
 import com.devonfw.application.apuestas_backend.usuariomejoramanagement.logic.api.usecase.UcFindUsuarioMejora;
 
@@ -30,5 +31,17 @@ public class UsuariomejoramanagementImpl extends AbstractComponentFacade impleme
 	public Page<UsuarioMejoraCto> findUsuarioMejoraCtos(UsuarioMejoraSearchCriteriaTo criteria) {
 
 		return ucFindUsuarioMejora.findUsuarioMejoraCtos(criteria);
+	}
+
+	@Override
+	public Boolean deleteUsuarioMejora(long idUsuarioMejora) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UsuarioMejoraEto saveUsuarioMejora(UsuarioMejoraEto usuarioMejoraEto) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
