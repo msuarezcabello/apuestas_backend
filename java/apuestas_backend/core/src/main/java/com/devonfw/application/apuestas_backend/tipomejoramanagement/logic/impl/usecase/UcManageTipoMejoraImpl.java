@@ -37,7 +37,10 @@ public class UcManageTipoMejoraImpl extends AbstractTipoMejoraUc implements UcMa
 	public boolean deleteTipoMejora(long tipoMejoraId) {
 
 		List<MejoraCto> listMejoraCtos = dependenciesById(tipoMejoraId);
-		if(listMejoraCtos.isEmpty()) {
+		if(!listMejoraCtos.isEmpty()) {
+//			for (MejoraCto mejoraCto : listMejoraCtos) {
+//
+//			}
 			return false;
 		}
 		else {
