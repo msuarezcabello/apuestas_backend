@@ -2,6 +2,7 @@ package com.devonfw.application.apuestas_backend.usuariomanagement.logic.impl.us
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Named;
 
@@ -67,6 +68,11 @@ public class UcFindUsuarioImpl extends AbstractUsuarioUc implements UcFindUsuari
 	@Override
 	public Boolean loginUsuario(UsuarioEto usuarioEto) {
 		LOG.debug("Login usuario {} with password {}.", usuarioEto.getUsername(), usuarioEto.getPassword());
+		Objects.requireNonNull(usuarioEto);
+		Objects.requireNonNull(usuarioEto.getUsername());
+		Objects.requireNonNull(usuarioEto.getPassword());
+		if (usuarioEto.getUsername().equals("") || usuarioEto.getPassword().equals(""))
+			throw new IllegalArgumentException("El nombre de usuario o contraseña no pueden estar vacios");
 
 		UsuarioSearchCriteriaTo usuarioSearchCriteriaTo = new UsuarioSearchCriteriaTo();
 		usuarioSearchCriteriaTo.setUsername(usuarioEto.getUsername());
