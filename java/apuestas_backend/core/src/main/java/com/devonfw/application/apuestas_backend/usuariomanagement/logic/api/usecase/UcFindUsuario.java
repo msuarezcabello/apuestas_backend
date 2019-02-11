@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioCto;
+import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioSearchCriteriaTo;
 
 public interface UcFindUsuario {
@@ -25,4 +26,11 @@ public interface UcFindUsuario {
 	 */
 	Page<UsuarioCto> findUsuarioCtos(UsuarioSearchCriteriaTo criteria);
 
+	/**
+	 * Returns a composite Usuario by its id 'id'.
+	 *
+	 * @param the Usuario to be logged in
+	 * @return If the loggin was successful
+	 */
+	Boolean loginUsuario(UsuarioEto usuarioEto);
 }

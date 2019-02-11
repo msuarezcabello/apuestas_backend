@@ -33,13 +33,16 @@ public class UsuariomanagementRestServiceImpl implements UsuariomanagementRestSe
 
 	@Override
 	public UsuarioEto saveUsuario(UsuarioEto usuarioEto) {
-
 		return this.usuariomanagement.saveUsuario(usuarioEto);
 	}
 
 	@Override
 	public Boolean deleteUsuario(long usuarioId) {
-
 		return this.usuariomanagement.deleteUsuario(usuarioId);
+	}
+
+	@Override
+	public Boolean loginUsuario(UsuarioEto usuarioEto) {
+		return this.usuariomanagement.loginUsuario(usuarioEto);
 	}
 }

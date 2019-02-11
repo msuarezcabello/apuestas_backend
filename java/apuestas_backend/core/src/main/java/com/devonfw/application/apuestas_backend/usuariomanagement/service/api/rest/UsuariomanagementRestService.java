@@ -64,4 +64,12 @@ public interface UsuariomanagementRestService {
 	@DELETE
 	@Path("/usuario/{id}")
 	public Boolean deleteUsuario(@PathParam("id") long id);
+
+	/**
+	 * @param the {@link usuarioId} to be logged in
+	 * @return a Boolean
+	 */
+	@POST
+	@Path("/usuario/login/")
+	public Boolean loginUsuario(UsuarioEto usuarioEto);
 }

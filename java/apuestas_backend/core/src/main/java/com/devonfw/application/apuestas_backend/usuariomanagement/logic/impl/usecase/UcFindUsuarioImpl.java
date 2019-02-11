@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import com.devonfw.application.apuestas_backend.personamanagement.logic.api.to.PersonaEto;
+import com.devonfw.application.apuestas_backend.personamanagement.logic.api.to.PersonaSearchCriteriaTo;
 import com.devonfw.application.apuestas_backend.usuariomanagement.dataaccess.api.UsuarioEntity;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioCto;
 import com.devonfw.application.apuestas_backend.usuariomanagement.logic.api.to.UsuarioEto;
@@ -61,5 +62,16 @@ public class UcFindUsuarioImpl extends AbstractUsuarioUc implements UcFindUsuari
 				criteria.getPageable().getPageSize());
 
 		return new PageImpl<>(ctos, pagResultTo, usuarios.getTotalElements());
+	}
+
+	@Override
+	public Boolean loginUsuario(UsuarioEto usuarioEto) {
+		LOG.debug("Login usuario {} with password {}.", usuarioEto.getUsername(), usuarioEto.getPassword());
+
+		UsuarioSearchCriteriaTo usuarioSearchCriteriaTo = new UsuarioSearchCriteriaTo();
+		usuarioSearchCriteriaTo.setUsername(usuarioEto.getUsername());
+		usuarioSearchCriteriaTo.setPassword(usuarioEto.getPassword());
+		usuarioSearchCriteriaTo.setPageable(PageRequest.of(0, 1));
+		return getUsuarioRepository().findByCriteria(usuarioSearchCriteriaTo).hasContent();
 	}
 }
